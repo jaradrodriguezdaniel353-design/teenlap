@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>TEENLAP — Your people. Your space.</title>
+<style>
+:root{--ink:#202124;--muted:#85878d;--line:#ececf0;--blue:#3985f7;--pink:#e84b91;--bg:#fff;--soft:#f7f8fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,textarea{font:inherit}button{cursor:pointer;border:0;background:none;color:inherit}
+.top{height:64px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(calc((100vw - 1100px)/2),20px);position:sticky;top:0;background:#ffffffed;backdrop-filter:blur(12px);z-index:5}
+.logo{font-size:25px;font-weight:900;letter-spacing:-1.5px;background:linear-gradient(90deg,#4385fa,#a65be8,#ed4d8e);background-clip:text;color:transparent}
+.search{width:min(270px,32vw);background:#f3f4f7;border:0;border-radius:10px;padding:11px 14px;outline:none}
+.top-actions{display:flex;gap:18px;align-items:center}.icon{font-size:21px}.avatar{width:31px;height:31px;border-radius:50%;background:linear-gradient(135deg,#ffb86c,#ee5c9b);display:grid;place-items:center;color:white;font-weight:800}
+.layout{max-width:1000px;margin:28px auto;display:grid;grid-template-columns:minmax(0,630px) 290px;gap:42px;padding:0 18px}
+.stories{border:1px solid var(--line);border-radius:13px;padding:16px 12px;display:flex;gap:18px;overflow:auto;margin-bottom:22px}
+.story{min-width:62px;text-align:center;font-size:12px;color:#65666b}.ring{width:58px;height:58px;border-radius:50%;padding:3px;margin:auto auto 6px;background:linear-gradient(45deg,#ffb347,#f04487,#9855ed)}.ring span{display:grid;place-items:center;width:100%;height:100%;border:2px solid white;border-radius:50%;background:#f1e8ff;font-weight:800;color:#7546b9}
+.post{border:1px solid var(--line);border-radius:13px;margin-bottom:22px;overflow:hidden;background:white}.posthead{height:58px;display:flex;align-items:center;gap:10px;padding:0 13px}.posthead strong{font-size:14px}.verified{color:#3985f7}.dots{margin-left:auto;font-size:20px}.postart{height:380px;display:grid;place-items:center;text-align:center;color:white;position:relative;overflow:hidden}.art1{background:radial-gradient(circle at 75% 22%,#ffc1dd 0 8%,transparent 28%),linear-gradient(135deg,#4c73c8,#8b54b9 55%,#ee8ca7)}.art2{background:radial-gradient(circle at 30% 30%,#ffdf9e,transparent 24%),linear-gradient(135deg,#1b293b,#566d83 60%,#c18d72)}.art3{background:radial-gradient(circle at 70% 30%,#b2f1d6,transparent 22%),linear-gradient(135deg,#f29a73,#b54e76 55%,#584d9d)}.artword{font-size:clamp(30px,6vw,54px);font-weight:900;letter-spacing:-2px;text-shadow:0 3px 20px #0003}.artsub{font-size:14px;letter-spacing:2px;margin-top:8px}.postbody{padding:12px 14px}.postbuttons{display:flex;gap:15px;align-items:center;font-size:23px}.save{margin-left:auto}.likes{font-weight:700;font-size:13px;margin:8px 0}.caption{font-size:14px;line-height:1.5}.caption b{margin-right:5px}.time{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;margin-top:8px}.commentrow{border-top:1px solid var(--line);padding:11px 14px;display:flex;gap:10px}.commentrow input{border:0;outline:0;flex:1;font-size:13px}.commentrow button{color:var(--blue);font-weight:700;font-size:13px}
+.side{padding-top:8px}.me{display:flex;align-items:center;gap:12px;margin-bottom:23px}.me .avatar{width:44px;height:44px}.me small,.suggest small{display:block;color:var(--muted);margin-top:3px}.sidehead{font-size:13px;color:#888;font-weight:700;margin:18px 0}.suggest{display:flex;align-items:center;gap:10px;margin:14px 0;font-size:13px}.suggest .avatar{width:34px;height:34px}.follow{margin-left:auto;color:var(--blue);font-size:12px;font-weight:700}.safety{background:#f7f8fb;border-radius:12px;padding:14px;font-size:12px;line-height:1.55;color:#676a73;margin-top:25px}.safety b{color:#30323a}
+.navmobile{display:none}.modalback{position:fixed;inset:0;background:#1118;display:none;align-items:center;justify-content:center;z-index:10;padding:16px}.modal{width:min(430px,100%);background:white;border-radius:16px;padding:22px;box-shadow:0 20px 60px #0003}.modal h2{margin:0 0 15px}.modal input,.modal textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:12px;margin:7px 0;outline-color:var(--blue)}.modal textarea{min-height:90px;resize:vertical}.primary{background:var(--blue);color:white;border-radius:9px;padding:11px 16px;font-weight:700}.secondary{background:#f1f2f5;border-radius:9px;padding:10px 14px}.modalfoot{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#24252a;color:white;padding:11px 17px;border-radius:30px;font-size:13px;display:none;z-index:20}
+@media(max-width:780px){.layout{display:block;max-width:630px;margin:18px auto}.side{display:none}.top{padding:0 14px}.search{width:35vw}.postart{height:340px}.navmobile{display:flex;position:fixed;bottom:0;left:0;right:0;height:58px;background:#fff;border-top:1px solid var(--line);justify-content:space-around;align-items:center;z-index:6}.layout{padding-bottom:65px}}
+@media(max-width:420px){.postart{height:290px}.stories{gap:12px}.top-actions{gap:11px}.search{width:31vw}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="logo">TEENLAP</div>
+ <input class="search" id="search" placeholder="Search people & interests" aria-label="Search">
+ <div class="top-actions"><button class="icon" title="Create post" onclick="openModal()">＋</button><button class="icon" title="Activity" onclick="toast('You’re all caught up!')">♡</button><div class="avatar">J</div></div>
+</header>
+<div class="layout">
+<main>
+ <section class="stories" aria-label="Stories">
+  <div class="story" onclick="toast('Your story composer is ready to connect to a secure upload service.')"><div class="ring"><span>＋</span></div>Your story</div>
+  <div class="story"><div class="ring"><span>MK</span></div>malcom.k</div>
+  <div class="story"><div class="ring"><span>OL</span></div>olivia</div>
+  <div class="story"><div class="ring"><span>TD</span></div>tendai</div>
+  <div class="story"><div class="ring"><span>ZA</span></div>zara.jpg</div>
+  <div class="story"><div class="ring"><span>LM</span></div>l.moyo</div>
+ </section>
+ <div id="feed">
+  <article class="post" data-search="malcom cars automotive design">
+   <div class="posthead"><div class="avatar">M</div><strong>malcom.k</strong><span class="verified">●</span><button class="dots" onclick="reportPost()">•••</button></div>
+   <div class="postart art1"><div><div class="artword">CREATE<br>YOUR LANE.</div><div class="artsub">DREAM IT. BUILD IT.</div></div></div>
+   <div class="postbody"><div class="postbuttons"><button onclick="like(this)">♡</button><button onclick="focusComment(this)">▢</button><button onclick="toast('Sharing is coming soon.')">↗</button><button class="save" onclick="savePost(this)">♧</button></div><div class="likes">128 likes</div><div class="caption"><b>malcom.k</b>Big ideas start somewhere. Keep creating. ✨</div><div class="time">2 hours ago</div></div>
+   <div class="commentrow"><input placeholder="Add a comment…" aria-label="Add a comment"><button onclick="comment(this)">Post</button></div>
+  </article>
+  <article class="post" data-search="olivia photography sunset">
+   <div class="posthead"><div class="avatar" style="background:linear-gradient(135deg,#f6bb72,#db6b92)">O</div><strong>olivia</strong><button class="dots" onclick="reportPost()">•••</button></div>
+   <div class="postart art2"><div><div class="artword">GOLDEN<br>HOUR.</div><div class="artsub">LITTLE MOMENTS, BIG MEMORIES</div></div></div>
+   <div class="postbody"><div class="postbuttons"><button onclick="like(this)">♡</button><button onclick="focusComment(this)">▢</button><button onclick="toast('Sharing is coming soon.')">↗</button><button class="save" onclick="savePost(this)">♧</button></div><div class="likes">86 likes</div><div class="caption"><b>olivia</b>Today was a good day ☀️</div><div class="time">5 hours ago</div></div>
+   <div class="commentrow"><input placeholder="Add a comment…" aria-label="Add a comment"><button onclick="comment(this)">Post</button></div>
+  </article>
+  <article class="post" data-search="tendai music playlist">
+   <div class="posthead"><div class="avatar" style="background:linear-gradient(135deg,#70c8b2,#5b6cba)">T</div><strong>tendai</strong><button class="dots" onclick="reportPost()">•••</button></div>
+   <div class="postart art3"><div><div class="artword">ON REPEAT.</div><div class="artsub">WHAT'S ON YOUR PLAYLIST?</div></div></div>
+   <div class="postbody"><div class="postbuttons"><button onclick="like(this)">♡</button><button onclick="focusComment(this)">▢</button><button onclick="toast('Sharing is coming soon.')">↗</button><button class="save" onclick="savePost(this)">♧</button></div><div class="likes">54 likes</div><div class="caption"><b>tendai</b>Music makes every moment better 🎧</div><div class="time">1 day ago</div></div>
+   <div class="commentrow"><input placeholder="Add a comment…" aria-label="Add a comment"><button onclick="comment(this)">Post</button></div>
+  </article>
+ </div>
+</main>
+<aside class="side">
+ <div class="me"><div class="avatar">J</div><div><b>your_profile</b><small>Welcome to TEENLAP</small></div></div>
+ <div class="sidehead">PEOPLE YOU MAY KNOW <span style="float:right">See all</span></div>
+ <div class="suggest"><div class="avatar">K</div><div><b>killerwave</b><small>Suggested for you</small></div><button class="follow" onclick="follow(this)">Follow</button></div>
+ <div class="suggest"><div class="avatar" style="background:#8d7bd4">N</div><div><b>naomi.jpg</b><small>Suggested for you</small></div><button class="follow" onclick="follow(this)">Follow</button></div>
+ <div class="suggest"><div class="avatar" style="background:#6eb6a1">D</div><div><b>danzo.wav</b><small>Suggested for you</small></div><button class="follow" onclick="follow(this)">Follow</button></div>
+ <div class="safety"><b>✦ Your space, your rules.</b><br>Keep your profile private, only connect with people you know, and report anything that makes you uncomfortable. Never share your address, school timetable or private contact details publicly.</div>
+ <div class="sidehead" style="font-size:11px;font-weight:400;line-height:1.8">ABOUT · HELP · PRIVACY · TERMS<br>© 2026 TEENLAP</div>
+</aside>
+</div>
+<nav class="navmobile"><button class="icon" onclick="window.scrollTo({top:0,behavior:'smooth'})">⌂</button><button class="icon" onclick="document.getElementById('search').focus()">⌕</button><button class="icon" onclick="openModal()">＋</button><button class="icon" onclick="toast('Your activity is up to date.')">♡</button><button class="icon" onclick="toast('Profile settings are a prototype.')">◉</button></nav>
+<div class="modalback" id="modal"><div class="modal"><h2>Create a post</h2><p style="color:#777;font-size:13px">Share something positive with your community.</p><input id="postTitle" placeholder="Your username"><textarea id="postText" placeholder="What's on your mind?"></textarea><div class="modalfoot"><button class="secondary" onclick="closeModal()">Cancel</button><button class="primary" onclick="publish()">Share post</button></div></div></div>
+<div class="toast" id="toast"></div>
+<script>
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display='none',2600)}
+function openModal(){document.getElementById('modal').style.display='flex'}
+function closeModal(){document.getElementById('modal').style.display='none'}
+function publish(){let user=document.getElementById('postTitle').value.trim()||'you';let msg=document.getElementById('postText').value.trim();if(!msg){toast('Add a caption before sharing.');return}let p=document.createElement('article');p.className='post';p.dataset.search=(user+' '+msg).toLowerCase();p.innerHTML=`<div class="posthead"><div class="avatar">Y</div><strong></strong><button class="dots" onclick="reportPost()">•••</button></div><div class="postart art3"><div><div class="artword">YOUR<br>MOMENT.</div><div class="artsub">SHARED ON TEENLAP</div></div></div><div class="postbody"><div class="postbuttons"><button onclick="like(this)">♡</button><button onclick="focusComment(this)">▢</button><button onclick="toast('Sharing is coming soon.')">↗</button><button class="save" onclick="savePost(this)">♧</button></div><div class="likes">0 likes</div><div class="caption"></div><div class="time">JUST NOW · LOCAL DEMO</div></div><div class="commentrow"><input placeholder="Add a comment…"><button onclick="comment(this)">Post</button></div>`;p.querySelector('.posthead strong').textContent=user;p.querySelector('.caption').textContent=msg;document.getElementById('feed').prepend(p);document.getElementById('postText').value='';closeModal();toast('Post added to this demo session.')}
+function like(btn){let active=btn.dataset.liked==='yes';btn.dataset.liked=active?'no':'yes';btn.textContent=active?'♡':'♥';btn.style.color=active?'':'#e84b91';let likes=btn.closest('.postbody').querySelector('.likes');let n=parseInt(likes.textContent)||0;likes.textContent=(n+(active?-1:1))+' likes'}
+function focusComment(btn){btn.closest('.post').querySelector('.commentrow input').focus()}
+function comment(btn){let input=btn.previousElementSibling;if(!input.value.trim()){toast('Write a comment first.');return}toast('Comment added in this demo.');input.value=''}
+function savePost(btn){btn.textContent=btn.textContent==='♧'?'▣':'♧';toast(btn.textContent==='▣'?'Saved in this demo.':'Removed from saved.')}
+function follow(btn){btn.textContent=btn.textContent==='Follow'?'Following':'Follow';}
+function reportPost(){toast('Report flow: this post would be sent to the moderation team.')}
+document.getElementById('search').addEventListener('input',e=>{let q=e.target.value.toLowerCase();document.querySelectorAll('.post').forEach(p=>p.style.display=p.dataset.search.includes(q)?'':'none')});
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+</script>
+</body></html>
